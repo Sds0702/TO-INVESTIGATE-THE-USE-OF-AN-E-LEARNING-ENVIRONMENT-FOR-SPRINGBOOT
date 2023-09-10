@@ -1,0 +1,24 @@
+version: '2'
+
+#networks:
+# default:
+# external: true
+# name: student_default
+
+services:
+  restapp:
+    image: samseq96/elearning:dissertation
+    restart: always
+    #environment:
+    #spring.datasource.url: jdbc:mysql://lmsdb:3308/courses
+    #spring.datasource.username: root
+    #spring.datasource.password: password
+    ports:
+      - "8080:8080"
+    expose:
+      - "8080"
+    # depends_on:
+    # studentdb:
+    # condition: service_healthy
+    networks:
+      - default

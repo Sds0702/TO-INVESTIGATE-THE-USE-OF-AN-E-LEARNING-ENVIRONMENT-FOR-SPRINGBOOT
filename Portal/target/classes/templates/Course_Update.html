@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <title>Sign Up to Student Portal</title>
+  <meta th:replace="fragments/header"/>
+</head>
+<body>
+
+<div id="alert" th:if="${message}" th:text="${message}" th:class="${'alert alert-danger text-center'}"></div>
+<div id="container">
+  <form class="col-mid-5 offset-md-5">
+    <div id="container">
+      <form class="form-signin" th:action="@{/register}" th:object="${user}" method="post">
+        <h2 class="form-signin-heading">User Registration</h2>
+    </div>
+    <p>
+      <label for="Username" class="form-label">Username</label>
+      <input id="username" type="text" th:field="*{userName}" class="form-control" required/>
+    </p>
+    <label for="email" class="form-label">Email Id</label>
+    <input id="email" type="email" th:field="*{email}" class="form-control" required/>
+    <p>
+    <p>
+      <label class="form-label" for="password">Password</label>
+      <input id="password" type="password" th:field="*{password}" class="form-control" required minlength="6" maxlength="10"/>
+    </p>
+</div>
+<button type="signup" class="btn btn-primary">Sign Up</button>
+<div>
+  <a href="/register">Click here to register.</a>
+</div>
+</form>
+</div>
+<div th:replace="fragments/footer"></div>
+</body>
+</html>

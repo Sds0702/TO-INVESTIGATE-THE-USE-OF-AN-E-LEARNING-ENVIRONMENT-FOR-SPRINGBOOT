@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Course Available</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <!-- Brand -->
+    <a class="navbar-brand" href="#">Course</a>
+
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/courses}">Course Management</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/courses}">Professors</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class ="container">
+    <div class = "row">
+        <h1> List Courses </h1>
+    </div>
+
+    <div class = "row">
+        <div class = "col-lg-3">
+            <a th:href = "@{/courses/new}" class = "btn btn-primary btn-sm mb-3"> Add Course</a>
+        </div>
+    </div>
+    <table class = "table table-striped table-bordered">
+        <thead class = "table-dark">
+        <tr>
+            <th> Course Name</th>
+            <th> Topic Summary</th>
+            <th> Professor Name </th>
+            <th> Actions </th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each = "course: ${courses}">
+            <td th:text = "${course.courseName}"></td>
+            <td th:text = "${course.topicSummary}"></td>
+            <td th:text = "${course.professorName}"></td>
+            <td>
+                <a th:href = "@{/courses/edit/{id}(id=${course.id})}"
+                   class = "btn btn-primary">Update</a>
+
+                <a th:href = "@{/courses/{id}(id=${course.id})}"
+                   class = "btn btn-danger">Delete</a>
+
+            </td>
+        </tr>
+        </tbody>
+
+    </table>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="footer-copyright">
+        <div class="container right-align">
+            <span>Copyright Via <i class="far fa-heart"></i> Springboot.io</span>
+            <a href="https://spring.io/projects/spring-boot"></a>
+
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
